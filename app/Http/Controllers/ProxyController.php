@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 class ProxyController extends Controller
 {
     //curl http://parsehub.valet/proxy?url=http://httpbin.org/get
-    public function get(Request $request) {
+    public function get(Request $request, $url) {
         $input = $request->all();
         $client = new Client();
-        $response = $client->get($input["proxy"], [
+        $response = $client->get($url, [
             "headers" => [
                 "Accept" => "*/*", 
                 "Accept-Encoding" => "gzip, deflate", 
@@ -23,10 +23,8 @@ class ProxyController extends Controller
     }
 
     //curl -X POST -d asdf=blah  http://parsehub.valet/proxy?url=http://httpbin.org/post
-    public function post(Request $request) {
+    public function post(Request $request, $url) {
         $input = $request->all();
-        $url = $input['proxy'];
-        unset($input['proxy']);
 
         $client = new Client();
         $response = $client->post($url, [

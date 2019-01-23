@@ -11,5 +11,5 @@
 |
 */
 
-Route::get('/', 'ProxyController@get');
-Route::post('/', 'ProxyController@post');
+Route::get('/proxy/{url?}', 'ProxyController@get')->where('url','.*');
+Route::post('/proxy/{url?}', 'ProxyController@post')->where('url','.*');
