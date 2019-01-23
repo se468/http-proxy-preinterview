@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class ProxyController extends Controller
 {
-    //curl http://parsehub.valet/proxy?url=http://httpbin.org/get
+    //curl http://parsehub-preinterview.seyongcho.com/proxy/http://httpbin.org/get
     public function get(Request $request, $url) {
         $input = $request->all();
         $client = new Client();
@@ -22,7 +22,7 @@ class ProxyController extends Controller
         return $response->getBody();
     }
 
-    //curl -X POST -d asdf=blah  http://parsehub.valet/proxy?url=http://httpbin.org/post
+    //curl -X POST -d asdf=blah  http://parsehub-preinterview.seyongcho.com/proxy/http://httpbin.org/post
     public function post(Request $request, $url) {
         $input = $request->all();
 
